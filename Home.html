@@ -1,0 +1,177 @@
+ <script>
+  function homePage(params) {
+  var currentUser = localStorage.getItem("currentUser");
+  if (JSON.parse(currentUser) == null) {
+    location.href = 'index.html';
+  }
+  }
+  homePage()
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+
+</head>
+<body>
+
+
+
+
+
+
+
+    <div class="to-do-list">
+        <div
+          class="container d-flex justify-content-center align-items-center p-0"
+        >
+          <div
+            class="to-do-list-body position-relative d-flex flex-column bg-white rounded-5"
+          >
+        
+            <div class="to-do-list-header">
+
+
+              <div class="userBtn">
+                <button id="openModalButton">
+                  <i class="fa-solid fa-circle-user userIcone" id="userIcon"></i>
+                  
+                </button>
+               
+              </div>
+              
+              <div id="profileModal" class="modal">
+                <div class="modal-content">
+                  <h2>User Profile</h2>
+                  <p>Name: <input  type="text" id="userFullName2" readonly  class="UsersInp"></p>
+                  <p>Email: <input  type="text" id="Useremail" readonly class="UsersInp"></p>
+                  <p>Password: <input  type="password" id="userPass" readonly class="UsersInp"></p>
+                  <div class="modal-btns">
+                    <button class="btn btn-block mb-4 edit-btn" onclick="edit()" id="edit-btn">Edit</button>
+                    <button class="btn btn-warning btn-block mb-4 close-btn text-white" onclick="closeModal()">Close</button>
+                    <button class="btn btn-danger btn-block mb-4 logout-btn" onclick="logout()">Log Out</button>
+                    <button class="btn btn-danger btn-block mb-4 logout-btn" onclick="deleteAcc()">Delete</button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="to-do-list-tasks ps-5 pe-5 pt-3 pb-5">
+              <div class="title text-center">
+              <h3 id="userFullName">Welcome, User</h3>
+                <h1 class="fw-bold">To-do list</h1>
+                <p id="tasksInfo" class="fw-bold">
+                    <span id="Total">0</span> Total, <span id="Completed">0</span> Completed, <span id="Pending">0</span> Pending
+                </p>
+              </div>
+              <div class="input-group mb-3">
+                <input
+                  id="taskInput"
+                  type="text"
+                  class="form-control"
+                  placeholder="Add your task ..."
+                  aria-label="Add your task" aria-describedby="button-addon2" onkeypress="handleKeyPress(event)"/>
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="addTaskBtn"
+                  onclick="addTask()"
+                  
+                >
+                  <i class="fa-solid fa-pencil"></i>
+                </button>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Num</th>
+                    <th class="w-50">Task</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody id="tasksBody">
+<!-- 
+                    <tr>
+                        <th class="wavy">1</th>
+                        <th class="wavy">khana kahana he</th>
+
+                        <th class="wavy task-date d-flex justify-content-center">
+                          <span>1</span> / <span>9</span>
+                        </th>
+
+                        <th>
+                        <i onclick="" class="fa-regular fa-square-check d-none"></i>
+                        <i onclick="" class="fa-solid fa-square-check "></i>
+                        </th>
+
+                        <th><i class="fa-solid fa-pen-to-square"></i></th>
+                        <th><i onclick="" class="fa-solid fa-trash-can"></i></th>
+
+                      </tr>
+
+                      <tr>
+                        <th class="wavy">2</th>
+                        <th class="wavy">Hnmmmmm</th>
+                        <th class="wavy task-date d-flex justify-content-center"><span>1</span> / <span>9</span></th>
+                        <th>
+                          <i onclick="" class="fa-regular fa-square-check d-none"></i
+                          ><i onclick="" class="fa-solid fa-square-check"></i>
+                        </th>
+                        <th><i class="fa-solid fa-pen-to-square"></i></i></th>
+                        <th><i onclick="" class="fa-solid fa-trash-can"></i></th>
+                      </tr> -->
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <footer>
+
+
+        <div class="main-footer">
+            <div>
+                <h1 class="anas">Anas jahangir</h1>
+            </div>
+
+            <div class="main-icons">
+              
+              <a href="https://anasjahangir.netlify.app" target="_blank"><i class="fa-solid fa-circle-user" ></i></a>
+                <a href="https://github.com/AnasJahangir" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.facebook.com/AnasJahangir0" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://twitter.com/AnasJahangir0" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/anasjahangir/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://wa.me/923192844932" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="p">
+            <p>&copy; 2023 Anas Jahangir. All Rights Reserved. | Designed and Developed by Anas Jahangir</p>
+        </div>
+        
+
+    </footer>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="app.js"></script>
+</body>
+</html>
