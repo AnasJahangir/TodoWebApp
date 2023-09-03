@@ -103,7 +103,7 @@ function signUp() {
 function login() {
     if (lemail.value != '' && lpass.value != '') {
             var getUsers = null
-           console.log(getUsers = JSON.parse(localStorage.getItem(lemail.value.toLowerCase())));
+           getUsers = JSON.parse(localStorage.getItem(lemail.value.toLowerCase()))
 
             // getUsers.pass === lpass.value;
         if (getUsers != null) {
@@ -525,8 +525,6 @@ if (JSON.parse(getcurrentUser) != null)  {
         tr.appendChild(thEdit)
         tr.appendChild(thDelete)
 
-      console.log(todolists);
-
         tasksBody.appendChild(tr)
         var userTask =  {
           task: taskInput.value,
@@ -550,8 +548,17 @@ if (JSON.parse(getcurrentUser) != null)  {
     localStorage.setItem("currentUser", JSON.stringify(currentUserData));
 
     
+    PendingTaskLength = 0;
+
+    for (var i = 0; i < currentUserData.todolists.length; i++) {
+      if (currentUserData.todolists[i].status === false) {
+        PendingTaskLength++
+      }
+    }
+
+    document.getElementById('Pending').innerText = PendingTaskLength
     document.getElementById('Total').innerText = currentUserData.todolists.length
-    document.getElementById('Pending').innerText = currentUserData.todolists.length
+
       }
 
 }
@@ -564,8 +571,6 @@ function taskDelete(e) {
   var editLength = childNodes[0].innerText
   var currentUserEmail = JSON.parse(localStorage.getItem("currentUser")).email;
   var currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
-
-  console.log(currentUserData);
 
   var Length =  Number(editLength);
   currentUserData.todolists.splice(Length -1 ,1)
