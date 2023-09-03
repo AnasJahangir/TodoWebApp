@@ -117,7 +117,7 @@ body {
   }
   .index{
     color: var(--text-color) !important;
-    background: url("./img/backImg.svg");
+    background: url("https://anas-todo-web.netlify.app/img/backImg.svg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -125,7 +125,7 @@ body {
   }
 
   .to-do-list {
-    background-image: url("./img/backImg.svg");
+    background-image: url("https://anas-todo-web.netlify.app/img/backImg.svg");
     min-height: 100vh;
     background-attachment: fixed;
 
@@ -154,7 +154,7 @@ body {
     z-index: 9999999;
   }
   .to-do-list .container .to-do-list-body .to-do-list-header {
-    background: url("./img/BackView.jpg"),rgba(0, 0, 0, 0.096);
+    background: url("https://anas-todo-web.netlify.app/img/BackView.jpg"),rgba(0, 0, 0, 0.096);
     background-blend-mode: multiply;
     background-position: center -400px;
     background-size: cover;
