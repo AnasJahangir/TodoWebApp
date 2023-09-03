@@ -63,7 +63,7 @@ function signUp() {
                     iconColor: '#00AD96',
                   }).then(() => {
                     if (true) {
-                        location.href = './Home.html';
+                        location.href = 'https://anas-todo-web.netlify.app/home';
                     }
                   });
                 
@@ -294,7 +294,7 @@ if (JSON.parse(getcurrentUser) != null)  {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
           localStorage.setItem("currentUser",null)
-          location.href = "index.html"
+          location.href = "https://anas-todo-web.netlify.app/"
         }
       })
 
@@ -472,7 +472,7 @@ if (JSON.parse(getcurrentUser) != null)  {
 
         localStorage.setItem("currentUser",null)
         localStorage.removeItem(userEmail)
-        location.href = "index.html"
+        location.href = "https://anas-todo-web.netlify.app/"
 
       }
       })
