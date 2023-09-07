@@ -564,6 +564,7 @@ if (JSON.parse(getcurrentUser) != null)  {
 }
 
 
+
 function taskDelete(e) {
     
   var parentNode = e.parentNode.parentNode;
@@ -572,12 +573,100 @@ function taskDelete(e) {
   var currentUserEmail = JSON.parse(localStorage.getItem("currentUser")).email;
   var currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
 
+
   var Length =  Number(editLength);
   currentUserData.todolists.splice(Length -1 ,1)
   localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
   localStorage.setItem("currentUser", JSON.stringify(currentUserData));
-  e.parentNode.parentNode.remove()
-  location.reload();
+
+  // e.parentNode.parentNode.remove()
+
+  var getcurrentTodo = JSON.parse(localStorage.getItem("currentUser"))
+  
+  var tasksBody = document.getElementById('tasksBody');
+  tasksBody.innerHTML = "";
+  var ComTaskLength = 0;
+  var PendingTaskLength = 0;
+
+  for (var i = 0; i < getcurrentTodo.todolists.length; i++) {
+
+
+      var tr = document.createElement('tr')
+      var thNo = document.createElement('th')
+      var thTaske = document.createElement('th')
+      var thDate = document.createElement('th')
+      var thCheck = document.createElement('th')
+      var thEdit = document.createElement('th')
+      var thDelete = document.createElement('th')
+
+      if (getcurrentTodo.todolists[i].status == true) {
+
+          ComTaskLength++
+             
+          
+
+        thNo.setAttribute("class",'wavy')
+        thTaske.setAttribute("class",'wavy')
+        thDate.setAttribute("class",'wavy')
+        thNo.textContent = i + 1;
+        thTaske.textContent = getcurrentTodo.todolists[i].task;
+        thDate.innerHTML = '<span>'+getcurrentTodo.todolists[i].date+'</span>/<span>'+getcurrentTodo.todolists[i].month+'</span>';
+        thCheck.innerHTML = '<i onclick="taskCheck(this)" class="fa-solid fa-square-check"></i>';
+        thEdit.innerHTML = '<i onclick="taskEdit(this)" class="fa-solid fa-pen-to-square"></i>';
+        thDelete.innerHTML = '<i onclick="taskDelete(this)" class="fa-solid fa-trash-can"></i>';
+  
+    
+  
+        tr.appendChild(thNo)
+        tr.appendChild(thTaske)
+        tr.appendChild(thDate)
+        tr.appendChild(thCheck)
+        tr.appendChild(thEdit)
+        tr.appendChild(thDelete)
+        tasksBody.appendChild(tr)
+
+
+      }else{
+
+       
+        thNo.textContent = i + 1;
+        thTaske.textContent = getcurrentTodo.todolists[i].task;
+        thDate.innerHTML = '<span>'+getcurrentTodo.todolists[i].date+'</span>/<span>'+getcurrentTodo.todolists[i].month+'</span>';
+        thCheck.innerHTML = '<i onclick="taskCheck(this)" class="fa-regular fa-square-check"></i>';
+        thEdit.innerHTML = '<i onclick="taskEdit(this)" class="fa-solid fa-pen-to-square"></i>';
+        thDelete.innerHTML = '<i onclick="taskDelete(this)" class="fa-solid fa-trash-can"></i>';
+  
+    
+  
+        tr.appendChild(thNo)
+        tr.appendChild(thTaske)
+        tr.appendChild(thDate)
+        tr.appendChild(thCheck)
+        tr.appendChild(thEdit)
+        tr.appendChild(thDelete)
+        tasksBody.appendChild(tr)
+  
+
+      }
+
+      
+      
+    
+    
+    }
+
+
+    for (var i = 0; i < getcurrentTodo.todolists.length; i++) {
+      if (getcurrentTodo.todolists[i].status === false) {
+        PendingTaskLength++
+      }
+    }
+
+    document.getElementById('Pending').innerText = PendingTaskLength
+
+    document.getElementById('Completed').innerText =  ComTaskLength
+     document.getElementById('Total').innerText = getcurrentTodo.todolists.length
+   
 
 }
 
